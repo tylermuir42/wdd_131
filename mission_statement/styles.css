@@ -1,0 +1,71 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    line-height: 1.5;
+    background-color: #f0f0f0;
+}
+
+.content {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 40px 60px;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+}
+
+.title {
+    text-align: center;
+}
+
+h1 {
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 15px;
+}
+
+h2 {
+    color: #006EB6;
+    font-size: 0.9em;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-top: 1px solid #d1d1d1;
+    border-bottom: 1px solid #d1d1d1;
+    padding: 10px 0;
+    margin-bottom: 40px;
+}
+
+main {
+    text-align: left;
+}
+
+ol.does-list {
+    padding-left: 25px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.logo {
+    width: 150px;
+}
+
+.dark{
+    background-color: #333;
+    color: white;
+}
+
+.dark main{
+    background-color: #333;
+}
+
+.dark .content{
+    background-color: #333;
+}
+
+.dark h2{
+    color: #4F9ACF;
+}
