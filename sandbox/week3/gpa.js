@@ -8,24 +8,24 @@ function getGrades(inputSelector){
 }
 
 //convert letter grade to points
-function gradeToPoints(grade){
+function gradeToPoints(cleanGrades){
     let points = 0;
-    if(grade === "A"){
+    if(cleanGrades === "A"){
         points = 4;
-    }else if(grade === "B"){
+    }else if(cleanGrades === "B"){
         points = 3;
-    }else if(grade === "C"){
+    }else if(cleanGrades === "C"){
         points = 2;
-    }else if(grade === "D"){
+    }else if(cleanGrades === "D"){
         points = 1;
     }
     return points
 }
 
 //calculate the GPA
-function calculateGpa(points){
-    const gradePoints = grades.map((grade) => gradeToPoints(grade));
-    const gpa = gradePoints.reduce((total, num) => total + num) / gradePoints.length;
+function calculateGpa(cleanGrades){
+    const gradePoints = cleanGrades.map((grade) => gradeToPoints(grade));
+    const gpa = gradePoints.reduce((total, num) => total + num, 0) / gradePoints.length;
     return gpa.toFixed(2);
 }
 
@@ -35,7 +35,8 @@ function outputGpa(gpa, selector){
 }
 
 function clickHandler(){
-    const grades = getGrades("#grades");
+    const cleanGrades = getGrades("#grades");
+    const gpa = calculateGpa(cleanGrades)
     outputGpa(gpa, "#output");
 }
 
