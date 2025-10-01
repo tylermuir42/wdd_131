@@ -1,0 +1,39 @@
+header{
+    text-align: center;
+    padding: 1rem;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5rem;
+}
+
+a{
+    margin-left: 1rem;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.left{
+    padding: 10px;
+}
+
+.middle{
+    padding: 10px;
+}
+
+.right{
+    padding: 10px;
+}
