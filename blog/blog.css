@@ -78,7 +78,7 @@ main{
 }
 
 #blog-posts-container{
-    flex: 3;
+    flex: 4;
 }
 
 .left{
@@ -87,10 +87,11 @@ main{
     padding: 10px;
     border-right: 3px solid #EFC69B;
     text-align: right;
+    flex: 1;
 }
 
 .middle{
-    /* text-align: center; */
+    flex: 2;
     padding: 10px;
     justify-content: center;
 }
