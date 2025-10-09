@@ -1,0 +1,130 @@
+body{
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card{
+    position: relative;
+    width: 500px;
+    height: 300px;
+}
+
+.card-front, .card-back{
+    position: absolute;
+    width: 400px;
+    height: 250px;
+    background-color: #e0e0e0;
+    border-radius: 15px;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.card-front{
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-back{
+    z-index: 3;
+    bottom: 0;
+    right: 0;
+}
+
+.card-back .stripe{
+    background-color: #333;
+    height: 50px;
+    margin: 20px -20px;
+}
+
+.cvv-group{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 20px;
+}
+
+label{
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+input{
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #888;
+    font-size: 16px;
+    padding: 5px 0;
+    width: 100%;
+    box-sizing: border-box;
+    color: #333;
+}
+
+input:focus{
+    outline: none;
+    border-bottom: 2px solid #000;
+}
+
+.row{
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.input-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.expiration-group{
+    display: flex;
+    gap: 10px;
+}
+
+.expiration-group input{
+    width: 40px;
+    text-align: center;
+}
+
+.card-image{
+    align-self: flex-end;
+    margin-top: -26px;
+    margin-left: 295px
+}
+
+.total-display{
+    font-size: 14px;
+    padding: 5px 10px;
+    align-self: flex-start;
+    margin-bottom: 20px;
+}
+
+.submit-btn{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-family: monospace;
+    font-size: 16px;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+.submit-btn:hover{
+    background-color: #f7f7f7;
+}
