@@ -39,7 +39,7 @@ body{
 }
 
 .card-back{
-    z-index: 3;
+    z-index: 1;
     bottom: 0;
     right: 0;
 }
@@ -54,7 +54,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    margin-top: 20px;
+    margin-top: 70px;
 }
 
 label{
@@ -65,12 +65,23 @@ label{
 }
 
 input{
-    background: transparent;
+    background: white;
     border: none;
-    border-bottom: 2px solid #888;
+    border: 2px solid #888;
     font-size: 16px;
     padding: 5px 0;
     width: 100%;
+    box-sizing: border-box;
+    color: #333;
+}
+
+.card-back input{
+    background: white;
+    border: none;
+    border: 2px solid #888;
+    font-size: 16px;
+    padding: 5px 0;
+    width: 18%;
     box-sizing: border-box;
     color: #333;
 }
@@ -112,6 +123,10 @@ input:focus{
     padding: 5px 10px;
     align-self: flex-start;
     margin-bottom: 20px;
+}
+
+.errorMsg{
+    color: red;
 }
 
 .submit-btn{
