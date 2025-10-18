@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Countdown History</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Saved Countdowns</h1>
+
+  <div id="history-list" class="history"></div>
+
+  <a href="index.html" class="link">← Back to Countdown</a>
+
+  <script>
+    const historyContainer = document.getElementById("history-list");
+    const savedCountdowns = JSON.parse(localStorage.getItem("countdowns")) || [];
+
+    if (savedCountdowns.length === 0) {
+      historyContainer.innerHTML = "<p>No countdowns saved yet.</p>";
+    } else {
+      savedCountdowns.forEach((item) => {
+        const targetDate = new Date(item.date);
+        const now = new Date();
+        const timeLeft = targetDate - now;
+
+        let message;
+        if (timeLeft <= 0) {
+          message = `✅ "${item.name}" has ended (${targetDate.toLocaleString()})`;
+        } else {
+          const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+          const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
+          message = `🕒 "${item.name}" in ${days}d ${hours}h ${minutes}m`;
+        }
+
+        const div = document.createElement("div");
+        div.classList.add("history-item");
+        div.textContent = message;
+        historyContainer.appendChild(div);
+      });
+    }
+  </script>
+</body>
+</html>

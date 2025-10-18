@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Countdown Timer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Countdown Timer</h1>
+
+  <form id="countdown-form">
+    <input type="text" id="event-name" placeholder="Event name (optional)" />
+    <input type="datetime-local" id="target-date" required />
+    <button type="submit">Start Countdown</button>
+  </form>
+
+  <div id="countdown">Enter a date and time above!</div>
+
+  <a href="history.html" class="link">View Past Countdowns →</a>
+
+  <script>
+    const form = document.getElementById("countdown-form");
+    const countdownDisplay = document.getElementById("countdown");
+    let countdownInterval;
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      clearInterval(countdownInterval);
+
+      const eventName = document.getElementById("event-name").value || "Unnamed Event";
+      const targetDate = new Date(document.getElementById("target-date").value);
+
+      if (isNaN(targetDate)) return;
+
+      // Save countdown to localStorage
+      const savedCountdowns = JSON.parse(localStorage.getItem("countdowns")) || [];
+      savedCountdowns.push({ name: eventName, date: targetDate.toISOString() });
+      localStorage.setItem("countdowns", JSON.stringify(savedCountdowns));
+
+      // Start countdown
+      countdownInterval = setInterval(() => {
+        const now = new Date();
+        const timeLeft = targetDate - now;
+
+        if (timeLeft <= 0) {
+          clearInterval(countdownInterval);
+          countdownDisplay.textContent = `🎉 "${eventName}" is here!`;
+          countdownDisplay.classList.add("expired");
+          return;
+        }
+
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
+        const seconds = Math.floor((timeLeft / 1000) % 60);
+
+        countdownDisplay.textContent = `"${eventName}" → ${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
