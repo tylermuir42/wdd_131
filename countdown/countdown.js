@@ -42,28 +42,47 @@ if(form){
 
 //Display list of timers on History page
 const historyContainer = document.getElementById("history-list");
-const savedCountdowns = JSON.parse(localStorage.getItem("countdowns")) || [];
 
-if(savedCountdowns.length === 0){
-    historyContainer.innerHTML = `<p>No countdowns saved yet.</p>`;
-}else{
-    savedCountdowns.forEach((item) => {
-        const targetDate = new Date(item.date);
-        const now = new Date();
-        const timeLeft = targetDate - now;
+if(historyContainer){
+    const savedCountdowns = JSON.parse(localStorage.getItem("countdowns")) || [];
 
-        let message;
-        if(timeLeft <= 0){
-            message = `✅ "${item.name}" has ended (${targetDate.toLocaleString()})`;
-        }else{
-                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
-                const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
-                message = `"${item.name}" in ${days}d ${hours}h ${minutes}m`;
-            }
-            const div = document.createElement("div");
-            div.classList.add("history-item");
-            div.textContent = message;
-            historyContainer.appendChild(div);
-        });
+    if(savedCountdowns.length === 0){
+        historyContainer.innerHTML = `<p>No countdowns saved yet.</p>`;
+    }else{
+        savedCountdowns.forEach((item, index) => {
+            const targetDate = new Date(item.date);
+            const now = new Date();
+            const timeLeft = targetDate - now;
+
+            let message;
+            if(timeLeft <= 0){
+                message = `✅ "${item.name}" has ended (${targetDate.toLocaleString()})`;
+            }else{
+                    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+                    const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
+                    message = `"${item.name}" in ${days}d ${hours}h ${minutes}m`;
+                }
+                const div = document.createElement("div");
+                div.classList.add("history-item");
+
+                const text = document.createElement("span");
+                text.textContent = message;
+
+                const deleteBtn = document.createElement("button");
+                deleteBtn.classList.add("delete-btn");
+                deleteBtn.innerHTML = "🗑️";
+
+                deleteBtn.addEventListener("click", () => {
+                    const currentCountdowns = JSON.parse(localStorage.getItem("countdowns")) || [];
+                    const updatedCountdowns = savedCountdowns.filter((_, i) => i !== index);
+                    localStorage.setItem("countdowns", JSON.stringify(updatedCountdowns));
+                    div.remove();
+                });
+
+                div.appendChild(text);
+                div.appendChild(deleteBtn);
+                historyContainer.appendChild(div);
+            });
+    }
 }

@@ -44,6 +44,22 @@ body{
   text-align: center;
 }
 
+.hero{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: center;
+  flex-direction: row;
+}
+
+.hero img{
+  max-width: 150px;
+  height: auto;
+}
+
 h1{
   font-size: 2.5rem;
   color: var(--accent1-color);
@@ -84,7 +100,7 @@ button:hover{
 }
 
 #countdown{
-  font-size: 1.8rem;
+  font-size: 2.8rem;
   font-weight: bold;
   margin-top: 1rem;
 }
@@ -111,10 +127,53 @@ button:hover{
 }
 
 .history-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #2b2b2b;
   padding: 1rem;
   border-radius: 10px;
   width: 90%;
   max-width: 400px;
   margin: auto;
+}
+
+.delete-btn{
+  background: none;
+  border: none;
+  color: #ff4d4d;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s, color 0.2s;
+  margin-left: 10px;
+}
+
+.delete-btn:hover{
+  transform: scale(1.2);
+  background-color: #ff1a1a;
+}
+
+.reference{
+  font-size: 0.7rem;
+  color: var(--accent1-color);
+  text-decoration: none;
+  position: fixed;
+  bottom: 5px;
+  right: 10px;
+}
+
+.reference:hover{
+  text-decoration: underline;
+}
+
+@media (min-width: 601px){
+  .hero{
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 600px){
+  .hero{
+    flex-direction: column;
+  }
 }
