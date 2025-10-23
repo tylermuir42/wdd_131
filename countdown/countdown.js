@@ -74,7 +74,7 @@ if(historyContainer){
                 deleteBtn.innerHTML = "🗑️";
 
                 deleteBtn.addEventListener("click", () => {
-                    const currentCountdowns = JSON.parse(localStorage.getItem("countdowns")) || [];
+                    const savedCountdowns = JSON.parse(localStorage.getItem("countdowns")) || [];
                     const updatedCountdowns = savedCountdowns.filter((_, i) => i !== index);
                     localStorage.setItem("countdowns", JSON.stringify(updatedCountdowns));
                     div.remove();
