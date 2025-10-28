@@ -35,7 +35,7 @@ if(form){
             const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
             const seconds = Math.floor((timeLeft / 1000) % 60);
 
-            countdownDisplay.textContent = `"${eventName}" ➡️ ${days}d ${hours}h ${minutes}m ${seconds}s`;
+            countdownDisplay.textContent = `"${eventName}" → ${days}d ${hours}h ${minutes}m ${seconds}s`;
         }, 1000);
     });
 }
